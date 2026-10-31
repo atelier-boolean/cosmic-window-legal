@@ -1,0 +1,200 @@
+/* Cosmic Window's legal pages, in the app's dark theme. The values mirror
+   the design system's tokens (DsDefaultColors.dark, a 4 px spacing and
+   radius unit, the platform's system font), so the pages look the same in
+   the app's webview and in a browser. */
+
+:root {
+  /* Colours (DsPalette, as mapped by DsDefaultColors.dark) */
+  --background: #0f1218; /* inkBlack */
+  --surface: #171b24; /* midnight */
+  --surface-raised: #2e3544; /* dusk */
+  --border: #2a3c5e; /* deepOceanBlue */
+  --content-primary: #f5f5f5; /* offWhite */
+  --content-secondary: #8fa3c2; /* mutedSkyBlue */
+  --content-caption: #5e7d9b; /* oceanBlue */
+  --accent: #c4b7d6; /* softPeriwinkle */
+  --on-accent: #0f1218; /* inkBlack */
+
+  /* Spacing: steps of a 4 px unit, named like the app's (s400 = 16 px) */
+  --s100: 4px;
+  --s200: 8px;
+  --s300: 12px;
+  --s400: 16px;
+  --s600: 24px;
+  --s800: 32px;
+  --s1200: 48px;
+
+  /* Corners */
+  --r300: 12px;
+  --r600: 24px;
+
+  /* Type: body 14/20, titles as the app's title and headline roles */
+  --body: 14px;
+  --body-line: 20px;
+  --small: 12px;
+  --small-line: 16px;
+  --title: 16px;
+  --title-line: 24px;
+  --headline: 24px;
+  --headline-line: 32px;
+
+  --page-width: 720px;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--content-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--body);
+  line-height: var(--body-line);
+  letter-spacing: 0.25px;
+}
+
+main {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--s400) var(--s400) var(--s1200);
+}
+
+/* The page's own header, hidden when the app shows the page under its own
+   title (?app=1). */
+.site-header {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--s600) var(--s400) 0;
+}
+
+.in-app .site-header,
+.in-app .site-footer {
+  display: none;
+}
+
+.app-name {
+  margin: 0 0 var(--s100);
+  color: var(--content-secondary);
+  font-size: var(--small);
+  line-height: var(--small-line);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: var(--headline);
+  line-height: var(--headline-line);
+  font-weight: 600;
+}
+
+.updated {
+  margin: var(--s200) 0 var(--s600);
+  color: var(--content-secondary);
+  font-size: var(--small);
+  line-height: var(--small-line);
+}
+
+.in-app .updated {
+  margin-top: 0;
+}
+
+.intro {
+  margin: 0 0 var(--s600);
+  color: var(--content-secondary);
+}
+
+/* A section reads like one of the app's Settings cards. */
+section {
+  margin: 0 0 var(--s300);
+  padding: var(--s400);
+  background: var(--surface);
+  border-radius: var(--r600);
+}
+
+h2 {
+  margin: 0 0 var(--s200);
+  font-size: var(--title);
+  line-height: var(--title-line);
+  font-weight: 600;
+}
+
+h3 {
+  margin: var(--s400) 0 var(--s100);
+  font-size: var(--body);
+  line-height: var(--body-line);
+  font-weight: 600;
+}
+
+p,
+ul {
+  margin: 0 0 var(--s300);
+  color: var(--content-secondary);
+}
+
+section > :last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  padding-left: var(--s400);
+}
+
+li {
+  margin-bottom: var(--s200);
+}
+
+li::marker {
+  color: var(--content-caption);
+}
+
+strong {
+  color: var(--content-primary);
+  font-weight: 600;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* The landing page's two links, as the app's list rows. */
+.links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links a {
+  display: block;
+  padding: var(--s400);
+  color: var(--content-primary);
+  font-size: var(--title);
+  line-height: var(--title-line);
+  text-decoration: none;
+}
+
+.links li {
+  margin: 0 0 var(--s300);
+  background: var(--surface);
+  border-radius: var(--r600);
+}
+
+.site-footer {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--s400) var(--s800);
+  color: var(--content-caption);
+  font-size: var(--small);
+  line-height: var(--small-line);
+}
