@@ -7,10 +7,19 @@
   <meta name="description" content="The terms for using Cosmic Window.">
   <link rel="stylesheet" href="style.css">
   <script>
-    // Opened by the app (?app=1): it shows the title itself.
-    if (new URLSearchParams(location.search).has('app')) {
-      document.documentElement.classList.add('in-app');
-    }
+    (function () {
+      var params = new URLSearchParams(location.search);
+      // Opened by the app (?app=1): it shows the title itself.
+      if (params.has('app')) {
+        document.documentElement.classList.add('in-app');
+      }
+      // ?platform=android|ios (the app sends it): hide the other
+      // platform's text. Without it, both show.
+      var platform = params.get('platform');
+      if (platform === 'android' || platform === 'ios') {
+        document.documentElement.classList.add('platform-' + platform);
+      }
+    })();
   </script>
 </head>
 <body>
@@ -111,9 +120,9 @@
     <section>
       <h2>App stores</h2>
       <p>
-        If you got the app from the App Store or Google Play, their own terms
-        apply too. Apple and Google aren't responsible for the app or its
-        support.
+        If you got the app from an app store (Google Play<span class="ios-only">
+        or the App Store</span>), the store's own terms apply too. The store
+        isn't responsible for the app or its support.
       </p>
     </section>
 

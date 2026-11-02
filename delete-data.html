@@ -7,10 +7,19 @@
   <meta name="description" content="How to delete your data from Cosmic Window, by Atelier Boolean.">
   <link rel="stylesheet" href="style.css">
   <script>
-    // Opened by the app (?app=1): it shows the title itself.
-    if (new URLSearchParams(location.search).has('app')) {
-      document.documentElement.classList.add('in-app');
-    }
+    (function () {
+      var params = new URLSearchParams(location.search);
+      // Opened by the app (?app=1): it shows the title itself.
+      if (params.has('app')) {
+        document.documentElement.classList.add('in-app');
+      }
+      // ?platform=android|ios (the app sends it): hide the other
+      // platform's text. Without it, both show.
+      var platform = params.get('platform');
+      if (platform === 'android' || platform === 'ios') {
+        document.documentElement.classList.add('platform-' + platform);
+      }
+    })();
   </script>
 </head>
 <body>
@@ -20,7 +29,7 @@
   </header>
 
   <main>
-    <p class="updated">Last updated 1 November 2026</p>
+    <p class="updated">Last updated 2 November 2026</p>
     <p class="intro">
       Cosmic Window has no accounts, and Atelier Boolean doesn't run servers
       that store your data. What the app keeps is on your device, and you can
@@ -42,8 +51,9 @@
       <p>
         To remove your NASA API key, use <strong>Settings → NASA API Key →
         Remove</strong>. Uninstalling the app deletes all of the above. On
-        Android it deletes the key too; on iPhone and iPad the system keeps
-        the key after the app is removed, so remove it in the app first.
+        Android it deletes the key too<span class="ios-only">; on iPhone and
+        iPad the system keeps the key after the app is removed, so remove it
+        in the app first</span>.
       </p>
     </section>
 
@@ -61,8 +71,8 @@
         </li>
         <li>
           reset or delete your device's advertising ID (Android: Settings →
-          Privacy → Ads), or turn off tracking on iOS (Settings → Privacy
-          &amp; Security → Tracking);
+          Privacy → Ads)<span class="ios-only">, or turn off tracking on iOS
+          (Settings → Privacy &amp; Security → Tracking)</span>;
         </li>
         <li>
           manage or delete your data with Google at

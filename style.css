@@ -76,6 +76,13 @@ main {
   padding: var(--s600) var(--s400) 0;
 }
 
+/* Text for one platform only (.android-only, .ios-only), hidden on the
+   other when the app says which it runs on (?platform=…). */
+.platform-android .ios-only,
+.platform-ios .android-only {
+  display: none;
+}
+
 .in-app .site-header,
 .in-app .site-footer {
   display: none;
